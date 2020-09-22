@@ -41,7 +41,7 @@ bool HelloWorld::init()
 	auto title = LabelTTF::create("2048", "Arial", 60);
 	title->setPosition(visibleSize.width / 2, visibleSize.height - 40);
 	this->addChild(title);
-	//Ìí¼Ó¿ªÊ¼°´Å¥
+	//ï¿½ï¿½ï¿½Ó¿ï¿½Ê¼ï¿½ï¿½Å¥
 	auto startBtn = MenuItemFont::create("start", CC_CALLBACK_1(HelloWorld::menucallback, this));
 	startBtn->setPosition(visibleSize.width / 2, visibleSize.height - 80);
 	startBtn->setFontSizeObj(30);
@@ -49,7 +49,7 @@ bool HelloWorld::init()
 	auto menu = Menu::create(startBtn, NULL);
 	menu->setPosition(Vec2::ZERO);
 	this->addChild(menu);
-	//·ÖÊý
+	//ï¿½ï¿½ï¿½ï¿½
 	auto scoretitle = LabelTTF::create("score", "Arial", 30);
 	scoretitle->setPosition(visibleSize.width / 5, visibleSize.height - 110);
 	scoretitle->setColor(Color3B(24, 106, 168));
@@ -63,9 +63,9 @@ bool HelloWorld::init()
 	starLayer->initwhitvirtue(300, 300, 71.25, 71.25, 5);
 	starLayer->setPosition(10, 40);
 	this->addChild(starLayer);
-	//Ô¤ÔØÈëÒôÐ§
+	//Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§
 	SimpleAudioEngine::getInstance()->preloadEffect("get.mp3");
-	//Ìí¼Ó´¥ÃþÕìÌý
+	//ï¿½ï¿½ï¿½Ó´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	auto listener = EventListenerTouchOneByOne::create();
 	listener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
 	listener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
@@ -86,7 +86,7 @@ bool HelloWorld::onTouchBegan(Touch *touch, Event *event)
 			return false;
 		}
 	}
-	
+	moveanctionrunning = true;
 	moveanctionrunning = false;
 	touchstartp = touch->getLocation();
 	return true;
@@ -125,25 +125,25 @@ void HelloWorld::onTouchEnded(Touch *touch, Event *event)
 	{
 		//music
 		SimpleAudioEngine::getInstance()->playEffect("get.mp3");
-		//·ÖÊý¸üÐÂ
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		score->setString(String::createWithFormat("%d", starLayer->count)->getCString());
 
-		//starLayer->rowcal[1][1] = 2048;//²âÊÔÊ¤Àû,
+		//starLayer->rowcal[1][1] = 2048;//ï¿½ï¿½ï¿½ï¿½Ê¤ï¿½ï¿½,
 		for (int i = 0; i < 4; i++)
 		for (int j = 0; j < 4; j++)
 		{
 			if (starLayer->rowcal[i][j] == 2048)
 
 			{
-				//ÓÎÏ·Ê¤Àû
+				//ï¿½ï¿½Ï·Ê¤ï¿½ï¿½
 				game_winover(true);
 				return;
 			}
 		}
-		//Ìí¼ÓÐÂµÄ¿¨Æ¬
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ÂµÄ¿ï¿½Æ¬
 		while (!starLayer->insertsprite(CCRANDOM_0_1() * 4, CCRANDOM_0_1() * 4)){ ; }
 
-		//ÅÐ¶ÏÊÇ·ñÊ§°Ü
+		//ï¿½Ð¶ï¿½ï¿½Ç·ï¿½Ê§ï¿½ï¿½
 		for (int i = 0; i < 4;i++)
 		for (int j = 0; j < 4; j++)
 		{
@@ -152,7 +152,7 @@ void HelloWorld::onTouchEnded(Touch *touch, Event *event)
 				return;
 			}
 		}
-		//ÓÎÏ·Ê§°Ü
+		//ï¿½ï¿½Ï·Ê§ï¿½ï¿½
 		game_winover(false);
 	}
 }
